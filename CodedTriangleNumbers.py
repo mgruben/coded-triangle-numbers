@@ -13,7 +13,7 @@ class Solution(object):
         return int(0.5 * n * (n + 1))
 
 def toInt(ch):
-    return ord(ch)
+    return ord(ch) - 64
         
 def Soltest():
     sol = Solution()
@@ -24,6 +24,11 @@ def readtest():
     for strings in f:
         # strips leading and trailing ", then splits on ","
         wordList = strings.strip("\"").split("\",\"")
-
+    for word in wordList:
+        score = 0
+        for letter in word:
+            score += toInt(letter)
+        print(word, score)
+        
 if __name__=="__main__":
     readtest()
