@@ -17,6 +17,7 @@ class Solution(object):
     def tri(self, n):
         return int(0.5 * n * (n + 1))
 
+
 def toInt(ch):
     return ord(ch) - 64
         
@@ -25,16 +26,23 @@ def Soltest():
     for i in [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]:
         print(sol.isTriangle(i + 1))
     
-def readtest():
+def main():
     f = open('p042_words.txt')
     for strings in f:
         # strips leading and trailing ", then splits on ","
         wordList = strings.strip("\"").split("\",\"")
+    
+    sol = Solution()
+    
+    numTriangularWords = 0
     for word in wordList:
         score = 0
         for letter in word:
             score += toInt(letter)
-        print(word, score)
+        if sol.isTriangle(score):
+            numTriangularWords += 1
+            
+    print(numTriangularWords)
         
 if __name__=="__main__":
-    Soltest()
+    main()
