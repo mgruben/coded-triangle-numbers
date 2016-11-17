@@ -21,11 +21,6 @@ class Solution(object):
 def toInt(ch):
     return ord(ch) - 64
         
-def Soltest():
-    sol = Solution()
-    for i in [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]:
-        print(sol.isTriangle(i + 1))
-    
 def main():
     f = open('p042_words.txt')
     for strings in f:
