@@ -15,8 +15,26 @@ class Solution(object):
         Returns True if the given 'num' is a Triangular Number,
                 False otherwise.
         '''
+        
+        # Save time by checking our memo
         if num in self.lookup:
             return True
+        
+        # If 'num' isn't in our memo, we know:
+        # (1) 'num' isn't triangular if our last-memoized number is
+        #     bigger than num
+        # (2) 'num' could be triangular otherwise.
+        #
+        # So, continue to calculate the next triangular number until
+        # the last one we calculated meets or exceeds 'num'.
+        #
+        # Finally, return True if the last-calculated triangular number
+        # equals 'num'.
+        #
+        # Return False otherwise.
+        # This catches both the situation where the last-memoized
+        # number was bigger than 'num', and where we had't yet
+        # calculated the triangular numbers up through 'num'.
         else:
             while num > self.lookup[-1]:
                 self.n += 1
