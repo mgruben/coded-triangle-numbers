@@ -1,13 +1,18 @@
 class Solution(object):
     def __init__(self):
-        self.lookup = {1: 1}
+        self.lookup = [1]
         self.n = 1
         
-    def getTriangle(self, n):
-        while self.n < n:
-            self.n += 1
-            self.lookup[n] = self.tri(n)
-        return self.lookup[n]
+    def isTriangle(self, num):
+        if num in self.lookup:
+            return True
+        else:
+            while num > self.lookup[-1]:
+                self.n += 1
+                self.lookup.append(self.tri(self.n))
+        if num == self.lookup[-1]:
+            return True
+        return False
         
     def tri(self, n):
         return int(0.5 * n * (n + 1))
@@ -17,7 +22,8 @@ def toInt(ch):
         
 def Soltest():
     sol = Solution()
-    print(sol.tri(10))
+    for i in [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]:
+        print(sol.isTriangle(i + 1))
     
 def readtest():
     f = open('p042_words.txt')
@@ -31,4 +37,4 @@ def readtest():
         print(word, score)
         
 if __name__=="__main__":
-    readtest()
+    Soltest()
